@@ -35,15 +35,12 @@ fileConfig(config.config_file_name)
 # for 'autogenerate' support
 # from myapp import mymodel
 # target_metadata = mymodel.Base.metadata
-target_metadata = models.Base.metadata
+target_metadata = models.Base.metadata 
 
 # other values from the config, defined by the needs of env.py,
 # can be acquired:
 # my_important_option = config.get_main_option("my_important_option")
 # ... etc.
-
-# UUIDのマイグレーション対応用関数追加
-
 
 def render_item(type_, obj, autogen_context):
     """Apply custom rendering for selected items."""

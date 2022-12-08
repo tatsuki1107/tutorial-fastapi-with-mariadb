@@ -39,6 +39,7 @@ services:
     volumes:
       - ./docker/db/conf.d:/etc/mysql/conf.d:cached
       - ./log/db:/var/log/mysql:cached
+      - ./db-store:/var/lib/mysql
     networks:
       - fastapi_network
     environment:

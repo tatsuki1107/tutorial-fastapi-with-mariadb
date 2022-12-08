@@ -12,7 +12,7 @@ def seed():
     ]
     books = [Book(title=title) for title in book_titles]
 
-    user = User(username='yusugomori')
+    user = User(username='tatsuki')
     user.books = books  # リレーションも丸ごと表現できる
 
     db.add(user)
@@ -25,3 +25,4 @@ if __name__ == '__main__':
 
     print(f'{BOS}Seeding data...{EOS}')
     seed()
+
