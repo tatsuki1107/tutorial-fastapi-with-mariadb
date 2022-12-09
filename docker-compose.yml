@@ -14,8 +14,8 @@ services:
     volumes:
       - ./app:/usr/src/app/app:cached
       - ./db:/usr/src/app/db:cached
-      - ./scripts:/usr/src/app/scripts:cached
-    working_dir: /usr/src/app/scripts
+      - ./scripts/dev:/usr/src/app/scripts/dev:cached
+    working_dir: /usr/src/app/scripts/dev
     command: bash -c "chmod +x ./run.sh && ./run.sh"
     networks:
       - fastapi_network
@@ -54,7 +54,7 @@ services:
       context: ./docker/nginx
       dockerfile: Dockerfile
     ports:
-      - "80:80"
+      - "8888:80"
     depends_on:
       - api
     env_file:

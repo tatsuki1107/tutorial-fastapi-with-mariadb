@@ -1,0 +1,48 @@
+version: '3.7'
+
+services:
+  api:
+    image: "fastapi_starter:1.0.0"
+    container_name: "fastapi_starter"
+    build:
+      context: ./docker/api
+      dockerfile: Dockerfile
+    expose:
+      - "8000"
+    volumes:
+      - ./app:/usr/src/app/app:cached
+      - ./db_prod:/usr/src/app/db_prod:cached
+      - ./scripts/prod:/usr/src/app/scripts/prod:cached
+    working_dir: /usr/src/app/scripts/prod
+    command: bash -c "chmod +x ./run.sh && ./run.sh"
+    networks:
+      - fastapi_network
+    environment:
+      APP_ENV: "production"
+      TZ: "Asia/Tokyo"
+    env_file:
+      - .env.production
+  
+  web:
+    container_name: nginx
+    build: 
+      context: ./docker/nginx
+      dockerfile: Dockerfile
+    ports:
+      - "80:81"
+    depends_on:
+      - api
+    env_file:
+      - .env.production
+    networks:
+      - fastapi_network
+    restart: always
+  
+networks:
+  default:
+    external:
+      name: bridge
+  fastapi_network:
+    name: fastapi_network
+    driver: bridge
+    external: true
