@@ -1,5 +1,8 @@
 # tutorial-fastapi-with-mariadb
 
+## 開発の目的  
+簡易的な開発、本番環境をEC2上に構築することでAWSの理解を深める
+
 ## set up
 ```
 docker compose -f docker-compose.prod.yml -f docker-compose.yml up -d
