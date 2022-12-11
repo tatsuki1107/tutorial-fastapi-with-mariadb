@@ -14,3 +14,9 @@ docker compose -f docker-compose.prod.yml -f docker-compose.yml up -d
 ## ドメイン  
 production:  t-t-platform.com/docs  
 development:  t-t-platform.com:8888/docs  
+
+## DB構成  
+
+![image](https://user-images.githubusercontent.com/79680980/206895411-9242debc-99f1-4e85-b1c7-2ce219b3a8d8.png)  
+
+簡易的な本予約システム
